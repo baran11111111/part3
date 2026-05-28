@@ -1,0 +1,34 @@
+# GitHub Actions Workflow: Deploy Frontend to Azure Web App
+# This workflow runs automatically every time code is pushed to the 'main' branch in the 'frontend' folder.
+# Student 2: Backend, Cloud & DevOps Developer
+
+name: Build and Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**' # Only trigger when files in the frontend folder change
+  workflow_dispatch: # Allows manual trigger of this workflow from GitHub Actions tab
+
+jobs:
+  deploy:
+    name: Deploy Static Website
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download code from GitHub repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Deploy to Azure Web App
+      # Note: You will need to get the "Publish Profile" from Azure Web App portal
+      # and save it in your GitHub Repository settings under Secrets -> Actions -> Repository Secrets.
+      # Name the secret: AZURE_WEBAPP_PUBLISH_PROFILE
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'YOUR-AZURE-WEB-APP-NAME' # ⚠️ REPLACE with your actual Azure Web App Name!
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: './frontend'

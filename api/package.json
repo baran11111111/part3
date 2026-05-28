@@ -1,0 +1,13 @@
+{
+  "name": "hospital-appointment-api",
+  "version": "1.0.0",
+  "description": "Hospital Appointment System Backend API (Azure Functions Node.js v4)",
+  "main": "src/functions/*.js",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.5.1"
+  }
+}

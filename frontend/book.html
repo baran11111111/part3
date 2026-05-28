@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediCare Clinic — Book an Appointment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="28" rx="8" fill="hsl(220,90%,56%)"/>
+          <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        MediCare
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="book.html" class="active">Book Appointment</a></li>
+        <li><a href="dashboard.html">My Appointments</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="page-container">
+    <div class="page-title">
+      <h1>Book an Appointment</h1>
+      <p>Fill in the details below and we will confirm your slot right away.</p>
+    </div>
+
+    <div class="glass-card form-card">
+      <form id="appointmentForm" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="patientName">Full Name</label>
+            <input
+              type="text"
+              id="patientName"
+              required
+              placeholder="Enter your full name"
+              autocomplete="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="patientEmail">Email Address</label>
+            <input
+              type="email"
+              id="patientEmail"
+              required
+              placeholder="name@example.com"
+              autocomplete="email"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="departmentSelect">Department</label>
+            <select id="departmentSelect" required>
+              <option value="" disabled selected>Select a Department</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="doctorSelect">Doctor</label>
+            <select id="doctorSelect" required disabled>
+              <option value="" disabled selected>Select a Doctor</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="appointmentTime">Preferred Date &amp; Time</label>
+          <input
+            type="datetime-local"
+            id="appointmentTime"
+            required
+          />
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn-submit">Confirm Booking</button>
+
+        <div id="messageBox" class="message-box hidden"></div>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 MediCare Clinic. All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# GitHub Actions Workflow: Deploy Backend to Azure Function App
+# This workflow runs automatically every time code is pushed to the 'main' branch in the 'api' folder.
+# Student 2: Backend, Cloud & DevOps Developer
+
+name: Build and Deploy Backend API
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'api/**' # Only trigger when backend files inside the 'api' folder change
+  workflow_dispatch: # Allows manual trigger of this workflow from GitHub Actions tab
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy Azure Function
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download code from GitHub repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js runtime environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Node.js 18 or 20 is perfect for Azure Functions v4 model
+
+      # Step 3: Install dependencies inside the api directory
+      - name: Install Dependencies
+        run: |
+          cd api
+          npm install
+
+      # Step 4: Deploy to Azure Function App
+      # Note: You will need to get the "Publish Profile" from Azure Function App portal
+      # and save it in your GitHub Repository settings under Secrets -> Actions -> Repository Secrets.
+      # Name the secret: AZURE_FUNCTION_PUBLISH_PROFILE
+      - name: Deploy to Azure Function App
+        uses: azure/functions-action@v1
+        id: fa
+        with:
+          app-name: 'YOUR-AZURE-FUNCTION-APP-NAME' # ⚠️ REPLACE with your actual Azure Function App Name!
+          publish-profile: ${{ secrets.AZURE_FUNCTION_PUBLISH_PROFILE }}
+          package: './api'

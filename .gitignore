@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+/api/node_modules/
+
+# Local configuration
+/api/local.settings.json
+.env
+
+# Local Mock Database (test data)
+/api/appointments.json
+
+# Editors / OS temp files
+.vscode/
+.DS_Store
+Thumbs.db
