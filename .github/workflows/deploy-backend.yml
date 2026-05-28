@@ -42,6 +42,6 @@ jobs:
         uses: azure/functions-action@v1
         id: fa
         with:
-          app-name: 'YOUR-AZURE-FUNCTION-APP-NAME' # ⚠️ REPLACE with your actual Azure Function App Name!
+          app-name: 'wrx95502-medicare-api'
           publish-profile: ${{ secrets.AZURE_FUNCTION_PUBLISH_PROFILE }}
           package: './api'

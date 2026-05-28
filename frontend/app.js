@@ -9,9 +9,11 @@
 // Automatically detect if we are running under the local Express server (port 3000),
 // if we are in a deployed production environment (e.g. Azure App Service),
 // or if we are using the local Azure Functions Core Tools (port 7071).
-const API_BASE_URL = (window.location.port === "3000" || (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1" && !window.location.port))
-  ? "/api"
-  : "http://localhost:7071/api";
+const API_BASE_URL = window.location.hostname.includes("azurewebsites.net")
+  ? "https://wrx95502-medicare-api.azurewebsites.net/api"
+  : (window.location.port === "3000" || (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1" && !window.location.port))
+    ? "/api"
+    : "http://localhost:7071/api";
 
 // Helper object to store loaded departments and doctors
 let localDepartmentsData = {};
