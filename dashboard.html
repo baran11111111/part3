@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediCare Clinic — My Appointments</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="28" rx="8" fill="hsl(220,90%,56%)"/>
+          <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        MediCare
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book Appointment</a></li>
+        <li><a href="dashboard.html" class="active">My Appointments</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="page-container wide">
+    <div class="page-title">
+      <h1>My Appointments</h1>
+      <p>Enter your email address to view and manage your booked appointments.</p>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="glass-card search-card">
+      <div class="search-row">
+        <input
+          type="email"
+          id="searchEmail"
+          required
+          placeholder="Enter your email to view your appointments"
+          autocomplete="email"
+        />
+        <button id="searchBtn" class="btn-search">View Appointments</button>
+      </div>
+    </div>
+
+    <!-- APPOINTMENTS LIST -->
+    <div id="appointmentsContainer"></div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 MediCare Clinic. All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
