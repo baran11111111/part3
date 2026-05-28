@@ -1,3 +1,4 @@
+// Azure Functions Endpoint for Listing and Deleting Appointments
 const { app } = require('@azure/functions');
 const { loadAppointments, deleteAppointment } = require('../db');
 
