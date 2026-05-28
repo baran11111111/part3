@@ -1,15 +1,17 @@
-﻿/**
+/**
  * Hospital Appointment System - Frontend Logic (app.js)
  * 
  * Connecting HTML files to our Azure Function API.
  * Student 2: Backend, Cloud & DevOps Developer
  */
 
-// --- ðŸŒ API CONFIGURATION ---
-// When running locally, Azure Functions start on http://localhost:7071/api
-// When deployed to Azure, change this variable to your live Azure Function URL:
-// Example: const API_BASE_URL = "https://your-function-app.azurewebsites.net/api";
-const API_BASE_URL = "http://localhost:7071/api";
+// --- 🌐 API CONFIGURATION ---
+// Automatically detect if we are running under the local Express server (port 3000),
+// if we are in a deployed production environment (e.g. Azure App Service),
+// or if we are using the local Azure Functions Core Tools (port 7071).
+const API_BASE_URL = (window.location.port === "3000" || (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1" && !window.location.port))
+  ? "/api"
+  : "http://localhost:7071/api";
 
 // Helper object to store loaded departments and doctors
 let localDepartmentsData = {};
